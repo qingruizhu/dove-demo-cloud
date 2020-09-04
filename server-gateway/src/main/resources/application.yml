@@ -1,0 +1,72 @@
+server:
+  port: 9001
+  servlet:
+    context-path: ""
+spring:
+  profiles:
+    active: dev
+  application:
+    name: "@pom.artifactId@"
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  http:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: false
+          lower-case-service-id: true
+      routes:
+        #权限中心
+        - id: rout_server_auth
+          uri: lb://server-auth
+          predicates:
+            - Path=/api-auth/**
+          filters:
+            - StripPrefix=1 # 表示在转发时去掉->api-authority
+            - name: Hystrix
+              args:
+                name: myfallback
+                fallbackUri: forward:/goFallBack
+        #a系统
+        - id: rout_server_frisbee
+          uri: lb://server-a
+          predicates:
+            - Path=/api-frisbee/**
+          filters:
+            - StripPrefix=1 # 表示在转发时去掉->api-other
+            - name: Hystrix
+              args:
+                name: myfallback
+                fallbackUri: forward:/goFallBack
+
+
+hystrix:
+  command:
+    default:
+      execution:
+        timeout:
+          enabled: true
+        isolation:
+          thread:
+            #熔断时间要大于负载时间
+            #            timeoutInMilliseconds: 32000
+            timeoutInMilliseconds: 6000
+    myfallback:
+      execution:
+        timeout:
+          enabled: true
+        isolation:
+          thread:
+            #熔断时间要大于负载时间
+            timeoutInMilliseconds: 12000
+
+
+logging:
+  level:
+    root: info

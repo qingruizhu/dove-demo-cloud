@@ -1,0 +1,55 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    # &serverTimezone=Asia/Shanghai 解决插入数据库时间和 new date() 时间不一致
+    # &useSSL=false 批量修改设置
+#    url:
+#    username:
+#    password:
+    type: com.alibaba.druid.pool.DruidDataSource
+    #druid
+    druid:
+      initial-size: 5
+      max-active: 100
+      min-idle: 5
+      max-wait: 60000
+      pool-prepared-statements: true
+      max-pool-prepared-statement-per-connection-size: 20
+      validation-query: SELECT 1 FROM DUAL
+      validation-query-timeout: 60000
+      test-on-borrow: false
+      test-on-return: false
+      test-while-idle: true
+      min-evictable-idle-time-millis: 100000
+      time-between-eviction-runs-millis: 60000 #默认60s
+      #      connection-error-retry-attempts: 3 #超时重试次数
+      break-after-acquire-failure: true #解决druid获取链接失败后刷日志问题
+      fail-fast: true #解决druid获取链接失败后线程卡死问题
+  redis:
+    host: localhost
+
+path:
+  log: /var/logs/${spring.application.name}
+
+sso:
+  authcode:
+    expiration: 60
+
+shiro:
+  jwt:
+    expiration: 86400
+  #    refreshTime: 900
+  anon:
+    path: /common/**,/sso/findPwd,/test/**
+
+
+file:
+  sfs:
+    root:
+      path: /sfs/latestage/
+
+
+#数据库密码加密
+jasypt:
+  encryptor:
+    password: xiaotuzhinicaicaikan

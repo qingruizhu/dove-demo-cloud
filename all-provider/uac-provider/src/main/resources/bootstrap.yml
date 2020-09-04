@@ -1,0 +1,17 @@
+#spring:
+#  cloud:
+#    nacos:
+#      discovery:
+#        server-addr: localhost:8848
+#dubbo:
+#  #  application:
+#  #    id: "@pom.artifactId@"
+#  #    name: "@pom.artifactId@"
+#  registry:
+#    address: spring-cloud://localhost
+#  protocol:
+#    name: dubbo
+#    port: -1
+#    host: 192.168.1.105
+#  scan:
+#    base-packages: com.dove.demo.provider.uac.service

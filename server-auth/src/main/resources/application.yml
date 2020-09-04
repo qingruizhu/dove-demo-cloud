@@ -1,0 +1,42 @@
+spring:
+  profiles:
+    active: dev
+  application:
+    name: "@pom.artifactId@"
+  #  redis:
+  #    host: localhost
+  #    port: 6379
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+        register-enabled: true
+server:
+  port: 9101
+  servlet:
+    context-path: ""
+
+logging:
+  root:
+    level: debug
+
+
+
+#mybatis:
+#  mapper-locations:
+#    - classpath:dao/*.xml
+#    - classpath*:com/tea/movie/play/bgd/auth/mapper/*.xml # ** 表示可多级目录
+
+# dubbo
+dubbo:
+  registry:
+    address: spring-cloud://localhost
+    register: false # 只订阅不注册
+  protocol:
+    name: dubbo
+    port: 20901
+    host: 192.168.1.105
+  cloud:
+    subscribed-services: uac-provider
+  consumer:
+    check: false

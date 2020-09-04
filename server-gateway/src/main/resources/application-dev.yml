@@ -1,0 +1,10 @@
+#spring:
+#  datasource:
+#    # &serverTimezone=Asia/Shanghai 解决插入数据库时间和 new date() 时间不一致
+#    # &useSSL=false 批量修改设置
+#    url: jdbc:mysql://123.57.102.27:3306/tea_ppm?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai
+#    username: root
+#    password: root
+
+path:
+  log: /Users/qingruizhu/Desktop/logs/${spring.application.name}

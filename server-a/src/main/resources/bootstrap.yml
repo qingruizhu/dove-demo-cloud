@@ -1,0 +1,23 @@
+security:
+  oauth2:
+    #    client:
+    #      client-id: frisbee-client
+    #      client-secret: frisbee-secret-8888
+    #      user-authorization-uri: http://localhost:8080/oauth/authorize
+    #      access-token-uri: http://localhost:8080/oauth/token
+    #    resource:
+    #      id: frisbee-client
+    #      user-info-uri: user-info
+    #    authorization:
+    #      check-token-access: http://localhost:8080/oauth/check_token
+    resource:
+      jwt:
+        # 获取 jwt-secret
+        #        key-uri: http://localhost:8080/oauth/token_key
+        key-value: bmljYWljYWlrYW4=
+
+dove:
+  oauth2:
+    ignore:
+      urls: /test/**,/common/**
+

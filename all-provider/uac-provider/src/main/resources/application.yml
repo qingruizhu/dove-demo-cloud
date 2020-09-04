@@ -1,0 +1,50 @@
+server:
+  port: 3001
+  servlet:
+    context-path: ""
+
+spring:
+  profiles:
+    active: dev
+  application:
+    name: "@pom.artifactId@"
+  #  main:
+  #    allow-bean-definition-overriding: true
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+
+logging:
+  root:
+    level: debug
+
+mybatis:
+  mapper-locations:
+    - classpath:dao/*.xml
+    - classpath*:com/tea/movie/play/bgd/auth/mapper/*.xml # ** 表示可多级目录
+
+# dubbo
+dubbo:
+  application:
+    id: "@pom.artifactId@"
+    name: "@pom.artifactId@"
+  #    qos-enable: true
+  registry:
+    address: spring-cloud://localhost
+    subscribe: false # 只注册不订阅
+  protocol:
+    name: dubbo
+    port: -1
+    host: 192.168.1.105
+  scan:
+    base-packages: com.dove.demo.provider.uac.service
+
+
+#数据库密码加密
+jasypt:
+  encryptor:
+    password: c2h1anVrdXpoaW5pY2FpY2Fpa2Fu
+    # 加密算法设置 3.0.0 以后
+    algorithm: PBEWithMD5AndDES
+    iv-generator-classname: org.jasypt.iv.NoIvGenerator

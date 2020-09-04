@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <parent>
+        <groupId>com.dove.demo</groupId>
+        <artifactId>all-bgd</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.dove.demo.bgd</groupId>
+    <artifactId>a-bgd</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>a-bgd</name>
+    <description>a系统-bgd</description>
+
+
+    <dependencies>
+        <dependency>
+            <groupId>com.dove.common</groupId>
+            <artifactId>dove-common-base</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+
+</project>

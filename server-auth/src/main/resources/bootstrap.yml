@@ -1,0 +1,6 @@
+dove:
+  oauth2:
+    jwt:
+      secret: bmljYWljYWlrYW4=
+    ignore:
+      urls: /test/**,/common/**,/sso/regist
